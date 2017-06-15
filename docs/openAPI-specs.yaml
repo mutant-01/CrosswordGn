@@ -118,6 +118,7 @@ definitions:
       id:
         type: integer
         format: int64
+        readOnly: true
       value:
         type: string
       used:
