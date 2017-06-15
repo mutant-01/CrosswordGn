@@ -8,6 +8,7 @@ routes should be appended under 'routes' variable of type 'urlRoutes'.
 package api
 
 import (
+	"github.com/gorilla/mux"
 	"net/http"
 )
 
@@ -33,6 +34,19 @@ type route struct{
 }
 // Container type of route types
 type urlRoutes []route
+
+// generateRouter generates the API router and maps handlers accordingly based on 'routes' container.
+func generateRouter() *mux.Router{
+	baseRouter := mux.NewRouter().Schemes(schemes...).PathPrefix(basePath).Subrouter()
+
+	for _, r := range routes{
+		for method, handler := range r.methods{
+			baseRouter.HandleFunc(r.path, handler).Methods(method)
+		}
+	}
+
+	return baseRouter
+}
 
 // routes definitions go here
 var routes urlRoutes = urlRoutes{
