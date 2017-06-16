@@ -16,14 +16,6 @@ const basePath = "/v1/" // todo move to config file
 var schemes = []string {"HTTP", "HTTPS"} // todo move to config file
 var dummyHandler = func(http.ResponseWriter, *http.Request){}  // todo to be deleted
 
-// HTTP methods
-const (
-	GET = "GET"
-	POST = "POST"
-	PUT = "PUT"
-	DELETE = "DELETE"
-)
-
 // httpMethodsHandler represents the mapping between routes and their handlers function.
 type httpMethodsHandler map[string]func(http.ResponseWriter, *http.Request)
 // A route contains each HTTP route properties
@@ -54,24 +46,24 @@ var routes urlRoutes = urlRoutes{
 		name: "info",
 		path: "/info",
 		methods: httpMethodsHandler{
-			GET: dummyHandler,
+			http.MethodGet: dummyHandler,
 		},
 	},
 	route{
 		name: "words",
 		path: "/words",
 		methods: httpMethodsHandler{
-			GET: dummyHandler,
-			POST: dummyHandler,
+			http.MethodGet: dummyHandler,
+			http.MethodPost: dummyHandler,
 		},
 	},
 	route{
 		name: "word",
 		path: "/words/{id}",
 		methods: httpMethodsHandler{
-			GET: dummyHandler,
-			PUT: dummyHandler,
-			DELETE: dummyHandler,
+			http.MethodGet: dummyHandler,
+			http.MethodPut: dummyHandler,
+			http.MethodDelete: dummyHandler,
 		},
 	},
 }
