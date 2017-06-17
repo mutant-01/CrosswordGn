@@ -53,17 +53,17 @@ var routes urlRoutes = urlRoutes{
 		name: "words",
 		path: "/words",
 		methods: httpMethodsHandler{
-			http.MethodGet: dummyHandler,
-			http.MethodPost: dummyHandler,
+			http.MethodGet: getAllWords,
+			http.MethodPost: createWord,
 		},
 	},
 	route{
 		name: "word",
 		path: "/words/{id}",
 		methods: httpMethodsHandler{
-			http.MethodGet: dummyHandler,
-			http.MethodPut: dummyHandler,
-			http.MethodDelete: dummyHandler,
+			http.MethodGet: getWordById,
+			http.MethodPut: replaceWord,
+			http.MethodDelete: deleteWord,
 		},
 	},
 }
